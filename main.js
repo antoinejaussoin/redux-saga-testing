@@ -1,14 +1,24 @@
-module.exports = function(generator) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (generator, testFunction) {
     var input = undefined;
-    return function(title, fn) {
-        it(title, function() {
+    var testFn = testFunction;
+    if (!testFn) {
+        testFn = it;
+    }
+    return function (title, fn) {
+        testFn(title, function () {
             if (input instanceof Error) {
                 var result = generator.throw(input);
-                input = fn(result.value);
+                input = fn.apply(undefined, [result.value].concat(Array.prototype.slice.call(arguments)));
             } else {
-                var result = generator.next(input);
-                input = fn(result.value);
+                var _result = generator.next(input);
+                input = fn.apply(undefined, [_result.value].concat(Array.prototype.slice.call(arguments)));
             }
         });
-    }
-}
+    };
+};

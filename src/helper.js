@@ -1,13 +1,17 @@
-export default generator => {
+export default (generator, testFunction) => {
     let input = undefined;
+    let testFn = testFunction;
+    if (!testFn) {
+        testFn = it;
+    }
     return (title, fn) => {
-        it(title, () => {
+        testFn(title, function() {
             if (input instanceof Error) {
                 const result = generator.throw(input);
-                input = fn(result.value);
+                input = fn(result.value, ...arguments);
             } else {
                 const result = generator.next(input);
-                input = fn(result.value);
+                input = fn(result.value, ...arguments);
             }
         });
     };

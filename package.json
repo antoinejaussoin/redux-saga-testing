@@ -4,9 +4,10 @@
   "description": "A no-brainer way of testing your Sagas",
   "main": "main.js",
   "scripts": {
-    "test": "cross-env jest && mocha ./mocha --compilers js:babel-core/register --require babel-polyfill",
+    "test": "cross-env jest && mocha ./mocha --compilers js:babel-core/register --require babel-polyfill && ava",
     "test-jest": "cross-env jest",
     "test-mocha": "cross-env mocha ./mocha --compilers js:babel-core/register --require babel-polyfill",
+    "test-ava": "cross-env ava",
     "test-jest-watch": "cross-env jest --watch",
     "test-mocha-watch": "cross-env mocha ./mocha -w"
   },
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/antoinejaussoin/redux-saga-testing#readme",
   "devDependencies": {
+    "ava": "^0.16.0",
     "babel-core": "^6.17.0",
     "babel-jest": "^16.0.0",
     "babel-polyfill": "^6.16.0",
@@ -38,10 +40,21 @@
     "redux-saga": "^0.11.0",
     "sinon": "^1.17.6"
   },
-  "dependencies": {},
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "rootDir": "jest"
+  },
+  "ava": {
+    "files": [
+      "ava/*.js"
+    ],
+    "concurrency": 5,
+    "failFast": true,
+    "verbose": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   }
 }
