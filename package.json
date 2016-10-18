@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-testing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A no-brainer way of testing your Sagas",
   "main": "main.js",
   "scripts": {
