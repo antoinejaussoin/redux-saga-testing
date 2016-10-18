@@ -2,6 +2,8 @@
 
 A no-brainer way of testing your Sagas™®
 
+#### Examples include [Jest](https://facebook.github.io/jest/) and [Mocha](https://mochajs.org/)
+
 [![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
 [![npm](https://img.shields.io/npm/dm/redux-saga-testing.svg?maxAge=2592000)]()
 [![Dependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing)
@@ -10,13 +12,18 @@ A no-brainer way of testing your Sagas™®
 
 
 > Sagas are hard, testing them is even harder
-> (Napoleon)
+> (*Napoleon*)
 
 Testing Sagas is difficult, and the aim of this little utility is to make testing them as close as possible to testing regular code.
 
-It should work with your favourite testing framework, although here the examples are using Jest.
+It should work with your favourite testing framework, although in this README the examples are using Jest.
+You can find examples for `mocha` as well in the GitHub repository.
 
-In this tutorial, we are going to see a few examples, from the simplest to the most complicated. You can find (and run) all these examples from the `__tests__` folder.
+In the repository, you will find examples using:
+- [Jest](https://facebook.github.io/jest/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest)
+- [Mocha](https://mochajs.org/), [expect.js](https://github.com/Automattic/expect.js), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha)
+- [AVA](https://github.com/avajs/ava) (coming soon)
+
 
 ## How to use
 
@@ -32,6 +39,8 @@ In this tutorial, we are going to see a few examples, from the simplest to the m
 ## Tutorial
 
 This tutorial goes from simple to complex. As you will see, testing Sagas becomes as easy as testing regular (and synchronous) code.
+
+Note: for Mocha examples, please [look here](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha)
 
 ### Simple (non-Saga) examples
 
