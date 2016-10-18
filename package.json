@@ -1,0 +1,36 @@
+{
+  "name": "redux-saga-testing",
+  "version": "0.0.1",
+  "description": "A no-brainer way of testing your Sagas",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://antoinejaussoin@github.com/antoinejaussoin/redux-saga-testing.git"
+  },
+  "keywords": [
+    "redux-saga",
+    "sagas",
+    "testing",
+    "jest"
+  ],
+  "author": "Antoine Jaussoin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antoinejaussoin/redux-saga-testing/issues"
+  },
+  "homepage": "https://github.com/antoinejaussoin/redux-saga-testing#readme",
+  "devDependencies": {
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-jest": "^16.0.0",
+    "jest": "^16.0.1",
+    "redux-saga": "^0.11.0"
+  },
+  "dependencies": {
+    
+  }
+}
