@@ -1,5 +1,11 @@
 # redux-saga-testing
+
 A no-brainer way of testing your Sagas™®
+
+[![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
+[![Travis branch](https://img.shields.io/travis/antoinejaussoin/redux-saga-testing/master.svg?style=flat-square)](https://travis-ci.org/antoinejaussoin/redux-saga-testing)
+[![Codecov](https://img.shields.io/codecov/c/github/antoinejaussoin/redux-saga-testing.svg?style=flat-square)](https://codecov.io/gh/antoinejaussoin/redux-saga-testing)
+
 
 > Sagas are hard, testing them is even harder
 > (Napoleon)
