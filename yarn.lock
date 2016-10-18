@@ -156,7 +156,29 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-ava:
+ava-files@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ava-files/-/ava-files-0.1.1.tgz#18abb6f4b87029c32fc35f2053fecd3a55f1d2b0"
+  dependencies:
+    arr-flatten "^1.0.1"
+    bluebird "^3.4.1"
+    globby "^5.0.0"
+    ignore-by-default "^1.0.1"
+    multimatch "^2.1.0"
+    slash "^1.0.0"
+
+ava-init@^0.1.0:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ava-init/-/ava-init-0.1.6.tgz#ef19ed0b24b6bf359dad6fbadf1a05d836395c91"
+  dependencies:
+    arr-exclude "^1.0.0"
+    cross-spawn "^4.0.0"
+    pinkie-promise "^2.0.0"
+    read-pkg-up "^1.0.1"
+    the-argv "^1.0.0"
+    write-pkg "^1.0.0"
+
+ava@^0.16.0:
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/ava/-/ava-0.16.0.tgz#07d7e06c627820115a84d7ee346f0bb165730454"
   dependencies:
@@ -231,28 +253,6 @@ ava:
     time-require "^0.1.2"
     unique-temp-dir "^1.0.0"
     update-notifier "^1.0.0"
-
-ava-files@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ava-files/-/ava-files-0.1.1.tgz#18abb6f4b87029c32fc35f2053fecd3a55f1d2b0"
-  dependencies:
-    arr-flatten "^1.0.1"
-    bluebird "^3.4.1"
-    globby "^5.0.0"
-    ignore-by-default "^1.0.1"
-    multimatch "^2.1.0"
-    slash "^1.0.0"
-
-ava-init@^0.1.0:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/ava-init/-/ava-init-0.1.6.tgz#ef19ed0b24b6bf359dad6fbadf1a05d836395c91"
-  dependencies:
-    arr-exclude "^1.0.0"
-    cross-spawn "^4.0.0"
-    pinkie-promise "^2.0.0"
-    read-pkg-up "^1.0.1"
-    the-argv "^1.0.0"
-    write-pkg "^1.0.0"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -3143,9 +3143,9 @@ redeyed@~1.0.0:
   dependencies:
     esprima "~2.7.0"
 
-redux-saga@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.11.1.tgz#dc2023d059af0b91c0b1b4febce21194b67d5a58"
+redux-saga@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.12.0.tgz#4b6145e6f8c33a6082f7d18f30ab5d2901e621e8"
 
 regenerate@^1.2.1:
   version "1.3.1"
