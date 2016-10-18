@@ -1,6 +1,6 @@
 import sagaHelper from '../main';
 
-// This is the generator / saga you with to test
+// This is the generator / saga you wish to test
 function* mySaga() {
     yield 42;
     yield 43;

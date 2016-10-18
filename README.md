@@ -10,6 +10,11 @@ It should work with your favourite testing framework, although here the examples
 
 In this tutorial, we are going to see a few examples, from the simplest to the most complicated. You can find (and run) all these examples from the `__tests__` folder.
 
+## How to use
+
+- Simply import the helper by doing `import sagaHelper from 'redux-saga-testing';`
+- Then follow the examples below to find out how it works
+
 ## How to run the tests
 
 - Checkout the code: `git clone https://github.com/antoinejaussoin/redux-saga-testing.git`
@@ -24,8 +29,10 @@ This tutorial goes from simple to complex. As you will see, testing Sagas become
 
 This example uses a simple generator. This is not using any of the `redux-saga` functions and helpers.
 
-```
-// This is the generator / saga you with to test
+```javascript
+import sagaHelper from 'redux-saga-testing';
+
+// This is the generator / saga you wish to test
 function* mySaga() {
     yield 42;
     yield 43;
@@ -63,3 +70,153 @@ describe('When testing a very simple generator (not even a Saga)', () => {
     });
 });
 ```
+
+## Testing a simple Saga
+
+This examples is now actually using the `redux-saga` utility functions.
+
+The important point to note here, is that Sagas **describe** what happens, and don't actually act on it.
+For example, an API will never be called, you don't have to mock it, when using `call`.
+
+This makes testing very easy indeed.
+
+```javascript
+import sagaHelper from 'redux-saga-testing';
+import { call, put } from 'redux-saga/effects';
+
+const api = jest.fn();
+const someAction = () => ({ type: 'SOME_ACTION', payload: 'foo' });
+
+function* mySaga() {
+    yield call(api);
+    yield put(someAction());
+}
+
+describe('When testing a very simple Saga', () => {
+    const it = sagaHelper(mySaga());
+
+    it('should have called the mock API first', result => {
+        // Here we test that the generator did run the "call" function, with the "api" as an argument.
+        // The api funtion is NOT called.
+        expect(result).toEqual(call(api));
+
+        // It's very important to understand that the generator ran the 'call' function,
+        // which only describes what it does, and that the API itself is never called.
+        // This is what we are testing here: (but you don't need to test that in your own tests)
+        expect(api).not.toHaveBeenCalled();
+    });
+
+    it('and then trigger an action', result => {
+        // We then test that on the next step some action is called
+        // Here, obviously, 'someAction' is called but it doesn't have any effect
+        // since it only returns an object describing the action
+        expect(result).toEqual(put(someAction()));
+    });
+
+    it('and then nothing', result => {
+        expect(result).toBeUndefined();
+    });
+});
+```
+
+## Testing a complex Saga
+
+This example deals with pretty much all use-cases for using Sagas, which involves calling an API, getting exceptions, and have some conditional logic based on some inputs.
+
+```javascript
+import sagaHelper from 'redux-saga-testing';
+import { call, put } from 'redux-saga/effects';
+
+const splitApi = jest.fn();
+const someActionSuccess = payload => ({ type: 'SOME_ACTION_SUCCESS', payload });
+const someActionEmpty = () => ({ type: 'SOME_ACTION_EMPTY' });
+const someActionError = error => ({ type: 'SOME_ACTION_ERROR', payload: error });
+
+function* mySaga(input) {
+    try {
+        // We try to call the API, with the given input
+        // We expect this API takes a string and returns an array of all the words, split by comma
+        const someData = yield call(splitApi, input);
+
+        // From the data we get from the API, we filter out the words 'foo' and 'bar'
+        const transformedData = someData.filter(w => ['foo', 'bar'].indexOf(w) === -1);
+
+        // If the resulting array is empty, we call the empty action, otherwise we call the success action
+        if (transformedData.length === 0) {
+            yield put(someActionEmpty());
+        } else {
+            yield put(someActionSuccess(transformedData));
+        }
+        
+    } catch (e) {
+        // If we got an exception along the way, we call the error action with the error message
+        yield put(someActionError(e.message));
+    }   
+}
+
+describe('When testing a complex Saga', () => {
+    
+    describe('Scenario 1: When the input contains other words than foo and bar and doesn\'t throw', () => {
+        const it = sagaHelper(mySaga('hello,foo,bar,world'));
+
+        it('should have called the mock API first, which we are going to specify the results of', result => {
+            expect(result).toEqual(call(splitApi, 'hello,foo,bar,world'));
+
+            // Here we specify what the API should have returned.
+            // Again, the API is not called so we have to give its expected response.
+            return ['hello', 'foo', 'bar', 'world'];
+        });
+
+        it('and then trigger an action with the transformed data we got from the API', result => {
+            expect(result).toEqual(put(someActionSuccess(['hello', 'world'])));
+        });
+
+        it('and then nothing', result => {
+            expect(result).toBeUndefined();
+        });
+    });
+
+    describe('Scenario 2: When the input only contains foo and bar', () => {
+        const it = sagaHelper(mySaga('foo,bar'));
+
+        it('should have called the mock API first, which we are going to specify the results of', result => {
+            expect(result).toEqual(call(splitApi, 'foo,bar'));
+            return ['foo', 'bar'];
+        });
+
+        it('and then trigger the empty action since foo and bar are filtered out', result => {
+            expect(result).toEqual(put(someActionEmpty()));
+        });
+
+        it('and then nothing', result => {
+            expect(result).toBeUndefined();
+        });
+    });
+
+    describe('Scenario 3: The API is broken and throws an exception', () => {
+        const it = sagaHelper(mySaga('hello,foo,bar,world'));
+
+        it('should have called the mock API first, which will throw an exception', result => {
+            expect(result).toEqual(call(splitApi, 'hello,foo,bar,world'));
+
+            // Here we pretend that the API threw an exception.
+            // We don't "throw" here but we return an error, which will be considered by the
+            // redux-saga-testing helper to be an exception to throw on the generator
+            return new Error('Something went wrong');
+        });
+
+        it('and then trigger an error action with the error message', result => {
+            expect(result).toEqual(put(someActionError('Something went wrong')));
+        });
+
+        it('and then nothing', result => {
+            expect(result).toBeUndefined();
+        });
+    });
+    
+});
+```
+
+### Other examples
+
+You have other examples in the __tests__ folder.
