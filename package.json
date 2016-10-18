@@ -1,10 +1,10 @@
 {
   "name": "redux-saga-testing",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A no-brainer way of testing your Sagas",
   "main": "main.js",
   "scripts": {
-    "test": "cross-env jest && mocha ./mocha",
+    "test": "cross-env jest && mocha ./mocha --compilers js:babel-core/register --require babel-polyfill",
     "test-jest": "cross-env jest",
     "test-mocha": "cross-env mocha ./mocha --compilers js:babel-core/register --require babel-polyfill",
     "test-jest-watch": "cross-env jest --watch",
