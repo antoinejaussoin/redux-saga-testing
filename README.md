@@ -2,7 +2,7 @@
 
 A no-brainer way of testing your Sagas™®
 
-#### Examples include [Jest](https://facebook.github.io/jest/) and [Mocha](https://mochajs.org/)
+#### Examples include [Jest](https://facebook.github.io/jest/), [Mocha](https://mochajs.org/) and [AVA](https://github.com/avajs/ava)
 
 [![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
 [![npm](https://img.shields.io/npm/dm/redux-saga-testing.svg?maxAge=2592000)]()
@@ -22,7 +22,7 @@ You can find examples for `mocha` as well in the GitHub repository.
 In the repository, you will find examples using:
 - [Jest](https://facebook.github.io/jest/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest)
 - [Mocha](https://mochajs.org/), [expect.js](https://github.com/Automattic/expect.js), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha)
-- [AVA](https://github.com/avajs/ava) (coming soon)
+- [AVA](https://github.com/avajs/ava), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava)
 
 
 ## How to use
@@ -236,4 +236,4 @@ describe('When testing a complex Saga', () => {
 
 ### Other examples
 
-You have other examples in the __tests__ folder.
+You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) [tests](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).

@@ -22,7 +22,7 @@ test('should return 42', (result, t) => {
     t.is(result, 42);
 });
 
-// On the next "it", we move the generator forward one step, and test again.
+// On the next "test", we move the generator forward one step, and test again.
 test('and then 43', (result, t) => {
     t.is(result, 43);
 });

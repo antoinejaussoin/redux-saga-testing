@@ -18,7 +18,8 @@ describe('When testing a very simple generator (not even a Saga)', () => {
     // This looks very much like a normal "it", with one difference: the function is passed
     // a "result", which is what has been yield by the generator.
     // This is what you are going to test, using your usual testing framework syntax.
-    // Here we are using "expect" because we are using Jest, but really it could be anything.
+    // Here we are using "expect" because we are using expect.js,
+    // but really it could be any other assertion library.
     it('should return 42', result => {
         expect(result).to.be(42);
     });
