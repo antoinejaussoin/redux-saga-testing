@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-testing",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A no-brainer way of testing your Sagas",
   "main": "main.js",
   "scripts": {
@@ -32,5 +32,9 @@
   },
   "dependencies": {
     
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
