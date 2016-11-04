@@ -244,3 +244,44 @@ You have other examples in the [various](https://github.com/antoinejaussoin/redu
 This library should be compatible with your favourite code-coverage frameworks.
 
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
+
+## Change Log
+
+### v0.0.1
+
+- Basic functionality
+- Addubg Jest tests examples
+- Readme
+
+### v0.0.2
+
+- Making the helper ES3 compatible
+
+### v0.0.3
+
+- Adding Travis support
+- Improve documentation
+
+### v0.0.4
+
+- Adding Mocha tests
+- Moved Jest tests to their own folders
+
+### v0.0.5
+
+- Bug fix on `npm test`
+
+### v0.1.0
+
+- Adding AVA tests
+- Improved documentation
+
+### v0.1.1
+
+- Adding Yarn support
+- Minifying the generated ES3 helper
+
+### v1.0.0
+
+- Adding code-coverage support for Jest and Mocha
+- The API will stay stable, and will enforce semver.
