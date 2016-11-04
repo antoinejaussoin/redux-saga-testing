@@ -308,6 +308,18 @@ babel-generator@^6.1.0, babel-generator@^6.11.3, babel-generator@^6.17.0:
     lodash "^4.2.0"
     source-map "^0.5.0"
 
+babel-generator@^6.18.0:
+  version "6.18.0"
+  resolved "http://npm-registry.fm.rbsgrp.net/babel-generator/-/babel-generator-6.18.0.tgz#e4f104cb3063996d9850556a45aae4a022060a07"
+  dependencies:
+    babel-messages "^6.8.0"
+    babel-runtime "^6.9.0"
+    babel-types "^6.18.0"
+    detect-indent "^4.0.0"
+    jsesc "^1.3.0"
+    lodash "^4.2.0"
+    source-map "^0.5.0"
+
 babel-helper-bindify-decorators@^6.8.0:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/babel-helper-bindify-decorators/-/babel-helper-bindify-decorators-6.8.0.tgz#b34805a30b1433cc0042f7054f88a7133c144909"
@@ -855,6 +867,20 @@ babel-traverse@^6.14.0, babel-traverse@^6.15.0, babel-traverse@^6.16.0, babel-tr
     invariant "^2.2.0"
     lodash "^4.2.0"
 
+babel-traverse@^6.18.0:
+  version "6.18.0"
+  resolved "http://npm-registry.fm.rbsgrp.net/babel-traverse/-/babel-traverse-6.18.0.tgz#5aeaa980baed2a07c8c47329cd90c3b90c80f05e"
+  dependencies:
+    babel-code-frame "^6.16.0"
+    babel-messages "^6.8.0"
+    babel-runtime "^6.9.0"
+    babel-types "^6.18.0"
+    babylon "^6.11.0"
+    debug "^2.2.0"
+    globals "^9.0.0"
+    invariant "^2.2.0"
+    lodash "^4.2.0"
+
 babel-types@^6.10.2, babel-types@^6.13.0, babel-types@^6.14.0, babel-types@^6.15.0, babel-types@^6.16.0, babel-types@^6.7.2, babel-types@^6.8.0, babel-types@^6.9.0:
   version "6.16.0"
   resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.16.0.tgz#71cca1dbe5337766225c5c193071e8ebcbcffcfe"
@@ -864,9 +890,22 @@ babel-types@^6.10.2, babel-types@^6.13.0, babel-types@^6.14.0, babel-types@^6.15
     lodash "^4.2.0"
     to-fast-properties "^1.0.1"
 
+babel-types@^6.18.0:
+  version "6.18.0"
+  resolved "http://npm-registry.fm.rbsgrp.net/babel-types/-/babel-types-6.18.0.tgz#1f7d5a73474c59eb9151b2417bbff4e4fce7c3f8"
+  dependencies:
+    babel-runtime "^6.9.1"
+    esutils "^2.0.2"
+    lodash "^4.2.0"
+    to-fast-properties "^1.0.1"
+
 babylon@^6.1.0, babylon@^6.11.0, babylon@^6.8.1:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.12.0.tgz#953e6202e58062f7f5041fc8037e4bd4e17140a9"
+
+babylon@^6.13.0:
+  version "6.13.1"
+  resolved "http://npm-registry.fm.rbsgrp.net/babylon/-/babylon-6.13.1.tgz#adca350e088f0467647157652bafead6ddb8dfdb"
 
 balanced-match@^0.4.1:
   version "0.4.2"
@@ -1299,6 +1338,12 @@ detect-indent@^3.0.1:
     minimist "^1.1.0"
     repeating "^1.1.0"
 
+detect-indent@^4.0.0:
+  version "4.0.0"
+  resolved "http://npm-registry.fm.rbsgrp.net/detect-indent/-/detect-indent-4.0.0.tgz#f76d064352cdf43a1cb6ce619c4ee3a9475de208"
+  dependencies:
+    repeating "^2.0.0"
+
 diff@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.0.1.tgz#a52d90cc08956994be00877bff97110062582c35"
@@ -1637,6 +1682,10 @@ glob@7.0.5:
 globals@^8.3.0:
   version "8.18.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-8.18.0.tgz#93d4a62bdcac38cfafafc47d6b034768cb0ffcb4"
+
+globals@^9.0.0:
+  version "9.12.0"
+  resolved "http://npm-registry.fm.rbsgrp.net/globals/-/globals-9.12.0.tgz#992ce90828c3a55fa8f16fada177adb64664cf9d"
 
 globby@^5.0.0:
   version "5.0.0"
@@ -1992,6 +2041,22 @@ istanbul-api@^1.0.0-aplha.10:
     mkdirp "0.5.x"
     once "1.x"
 
+istanbul-api@^1.1.0-alpha:
+  version "1.1.0-alpha.1"
+  resolved "http://npm-registry.fm.rbsgrp.net/istanbul-api/-/istanbul-api-1.1.0-alpha.1.tgz#74f1e7ac07285c3d29ad97af22d9c8e337bd0ab4"
+  dependencies:
+    async "1.x"
+    fileset "0.2.x"
+    istanbul-lib-coverage "^1.0.0-alpha"
+    istanbul-lib-hook "^1.0.0-alpha"
+    istanbul-lib-instrument "^1.1.0-alpha"
+    istanbul-lib-report "^1.0.0-alpha"
+    istanbul-lib-source-maps "^1.0.0-alpha"
+    istanbul-reports "^1.0.0-alpha"
+    js-yaml "3.x"
+    mkdirp "0.5.x"
+    once "1.x"
+
 istanbul-lib-coverage@^1.0.0, istanbul-lib-coverage@^1.0.0-alpha, istanbul-lib-coverage@^1.0.0-alpha.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-1.0.0.tgz#c3f9b6d226da12424064cce87fce0fb57fdfa7a2"
@@ -2012,6 +2077,18 @@ istanbul-lib-instrument@^1.0.0-alpha, istanbul-lib-instrument@^1.1.1, istanbul-l
     babel-types "^6.10.2"
     babylon "^6.8.1"
     istanbul-lib-coverage "^1.0.0"
+
+istanbul-lib-instrument@^1.1.0-alpha:
+  version "1.2.0"
+  resolved "http://npm-registry.fm.rbsgrp.net/istanbul-lib-instrument/-/istanbul-lib-instrument-1.2.0.tgz#73d5d108ab7568c373fdcb7d01c1d42d565bc8c4"
+  dependencies:
+    babel-generator "^6.18.0"
+    babel-template "^6.16.0"
+    babel-traverse "^6.18.0"
+    babel-types "^6.18.0"
+    babylon "^6.13.0"
+    istanbul-lib-coverage "^1.0.0"
+    semver "^5.3.0"
 
 istanbul-lib-report@^1.0.0-alpha:
   version "1.0.0-alpha.3"
@@ -2055,6 +2132,19 @@ istanbul@^0.4.5:
     once "1.x"
     resolve "1.1.x"
     supports-color "^3.1.0"
+    which "^1.1.1"
+    wordwrap "^1.0.0"
+
+istanbul@1.1.0-alpha.1:
+  version "1.1.0-alpha.1"
+  resolved "http://npm-registry.fm.rbsgrp.net/istanbul/-/istanbul-1.1.0-alpha.1.tgz#781795656018a2174c5f60f367ee5d361cb57b77"
+  dependencies:
+    abbrev "1.0.x"
+    async "1.x"
+    istanbul-api "^1.1.0-alpha"
+    js-yaml "3.x"
+    mkdirp "0.5.x"
+    nopt "3.x"
     which "^1.1.1"
     wordwrap "^1.0.0"
 
@@ -3312,7 +3402,7 @@ semver-diff@^2.0.0:
   dependencies:
     semver "^5.0.3"
 
-semver@^5.0.3, semver@^5.1.0, semver@~5.3.0, "semver@2 || 3 || 4 || 5":
+semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@~5.3.0, "semver@2 || 3 || 4 || 5":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
