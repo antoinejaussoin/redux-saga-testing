@@ -5,7 +5,6 @@ A no-brainer way of testing your Sagas™®
 #### Examples include [Jest](https://facebook.github.io/jest/), [Mocha](https://mochajs.org/) and [AVA](https://github.com/avajs/ava)
 
 [![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
-[![npm](https://img.shields.io/npm/dm/redux-saga-testing.svg?maxAge=2592000)]()
 [![Dependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing)
 [![devDependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing/dev-status.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing#info=devDependencies)
 [![Travis branch](https://img.shields.io/travis/antoinejaussoin/redux-saga-testing/master.svg?style=flat-square)](https://travis-ci.org/antoinejaussoin/redux-saga-testing)
@@ -247,41 +246,46 @@ In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Je
 
 ## Change Log
 
-### v0.0.1
+### v1.0.1
 
-- Basic functionality
-- Addubg Jest tests examples
-- Readme
+- Fixing a Yarn.lock issue
+- Fixing a few readme problems 
 
-### v0.0.2
+### v1.0.0
 
-- Making the helper ES3 compatible
-
-### v0.0.3
-
-- Adding Travis support
-- Improve documentation
-
-### v0.0.4
-
-- Adding Mocha tests
-- Moved Jest tests to their own folders
-
-### v0.0.5
-
-- Bug fix on `npm test`
-
-### v0.1.0
-
-- Adding AVA tests
-- Improved documentation
+- Adding code-coverage support for Jest and Mocha
+- The API will stay stable, and will enforce semver.
 
 ### v0.1.1
 
 - Adding Yarn support
 - Minifying the generated ES3 helper
 
-### v1.0.0
+### v0.1.0
 
-- Adding code-coverage support for Jest and Mocha
-- The API will stay stable, and will enforce semver.
+- Adding AVA tests
+- Improved documentation
+
+### v0.0.5
+
+- Bug fix on `npm test`
+
+### v0.0.4
+
+- Adding Mocha tests
+- Moved Jest tests to their own folders
+
+### v0.0.3
+
+- Adding Travis support
+- Improve documentation
+
+### v0.0.2
+
+- Making the helper ES3 compatible
+
+### v0.0.1
+
+- Basic functionality
+- Addubg Jest tests examples
+- Readme
