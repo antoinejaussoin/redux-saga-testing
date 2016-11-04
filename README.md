@@ -17,23 +17,24 @@ A no-brainer way of testing your Sagas™®
 Testing Sagas is difficult, and the aim of this little utility is to make testing them as close as possible to testing regular code.
 
 It should work with your favourite testing framework, although in this README the examples are using Jest.
-You can find examples for `mocha` as well in the GitHub repository.
+You can find examples for `mocha` and `ava` as well in the GitHub repository.
 
 In the repository, you will find examples using:
-- [Jest](https://facebook.github.io/jest/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest)
-- [Mocha](https://mochajs.org/), [expect.js](https://github.com/Automattic/expect.js), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha)
+- [Jest](https://facebook.github.io/jest/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) (now including **code coverage**)
+- [Mocha](https://mochajs.org/), [expect.js](https://github.com/Automattic/expect.js), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) (now including **code coverage**)
 - [AVA](https://github.com/avajs/ava), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava)
 
 
 ## How to use
 
 - Simply import the helper by doing `import sagaHelper from 'redux-saga-testing';`
-- Then follow the examples below to find out how it works
+- Override your "it" testing function with the wrapper: `const it = sagaHelper(sagaUnderTest())`
+- Add one "it" per iteration to to test each step (see examples below to see how it works)
 
 ## How to run the tests
 
 - Checkout the code: `git clone https://github.com/antoinejaussoin/redux-saga-testing.git`
-- Install the dependencies: `npm i`
+- Install the dependencies: `npm i` (or better: `yarn`)
 - Run the tests: `npm test`
 
 ## Tutorial
@@ -237,3 +238,50 @@ describe('When testing a complex Saga', () => {
 ### Other examples
 
 You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) [tests](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).
+
+## Code coverage
+
+This library should be compatible with your favourite code-coverage frameworks.
+
+In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
+
+## Change Log
+
+### v0.0.1
+
+- Basic functionality
+- Addubg Jest tests examples
+- Readme
+
+### v0.0.2
+
+- Making the helper ES3 compatible
+
+### v0.0.3
+
+- Adding Travis support
+- Improve documentation
+
+### v0.0.4
+
+- Adding Mocha tests
+- Moved Jest tests to their own folders
+
+### v0.0.5
+
+- Bug fix on `npm test`
+
+### v0.1.0
+
+- Adding AVA tests
+- Improved documentation
+
+### v0.1.1
+
+- Adding Yarn support
+- Minifying the generated ES3 helper
+
+### v1.0.0
+
+- Adding code-coverage support for Jest and Mocha
+- The API will stay stable, and will enforce semver.
