@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-testing",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A no-brainer way of testing your Sagas",
   "main": "main.js",
   "scripts": {
@@ -19,11 +19,15 @@
   "keywords": [
     "redux-saga",
     "sagas",
+    "saga",
+    "redux",
     "testing",
     "test",
     "jest",
     "mocha",
-    "ava"
+    "ava",
+    "expect",
+    "sinon"
   ],
   "author": "Antoine Jaussoin",
   "license": "MIT",
