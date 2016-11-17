@@ -12,7 +12,7 @@ A no-brainer way of testing your Sagas™®
 [![Dependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing)
 [![devDependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing/dev-status.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing#info=devDependencies)
 [![Travis branch](https://img.shields.io/travis/antoinejaussoin/redux-saga-testing/master.svg?style=flat-square)](https://travis-ci.org/antoinejaussoin/redux-saga-testing)
-
+[![Known Vulnerabilities](https://snyk.io/test/npm/redux-saga-testing/badge.svg)](https://snyk.io/test/npm/redux-saga-testing)
 
 > Sagas are hard, testing them is even harder
 > (*Napoleon*)
