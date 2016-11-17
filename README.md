@@ -1,6 +1,10 @@
 # redux-saga-testing
 
+---
+
 A no-brainer way of testing your Sagas™®
+
+---
 
 #### Examples include [Jest](https://facebook.github.io/jest/), [Mocha](https://mochajs.org/) and [AVA](https://github.com/avajs/ava)
 
@@ -16,9 +20,8 @@ A no-brainer way of testing your Sagas™®
 Testing Sagas is difficult, and the aim of this little utility is to make testing them as close as possible to testing regular code.
 
 It should work with your favourite testing framework, although in this README the examples are using Jest.
-You can find examples for `mocha` and `ava` as well in the GitHub repository.
 
-In the repository, you will find examples using:
+You can find examples for `mocha` and `ava` as well in the GitHub repository:
 - [Jest](https://facebook.github.io/jest/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) (now including **code coverage**)
 - [Mocha](https://mochajs.org/), [expect.js](https://github.com/Automattic/expect.js), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) (now including **code coverage**)
 - [AVA](https://github.com/avajs/ava), [sinon](http://sinonjs.org/) in this [location](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava)
@@ -29,6 +32,12 @@ In the repository, you will find examples using:
 - Simply import the helper by doing `import sagaHelper from 'redux-saga-testing';`
 - Override your "it" testing function with the wrapper: `const it = sagaHelper(sagaUnderTest())`
 - Add one "it" per iteration to to test each step (see examples below to see how it works)
+
+# Dependencies
+
+The helper doesn't depend on *anything*.
+
+You can then use this with any version of `redux-saga`, or without it for that matter and test simple generators.
 
 ## How to run the tests
 
@@ -245,6 +254,12 @@ This library should be compatible with your favourite code-coverage frameworks.
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
 
 ## Change Log
+
+### v1.0.2
+
+- Updating dependencies
+- Jest updated from 0.16 to 0.17
+- redux-saga upgraded to the latest 0.13 version
 
 ### v1.0.1
 
