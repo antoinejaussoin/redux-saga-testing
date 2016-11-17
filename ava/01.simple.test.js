@@ -2,7 +2,7 @@ import sagaHelper from '../main';
 import avaTest from 'ava';
 
 // This is the generator / saga you wish to test
-function* mySaga() {
+function* myGenerator() {
     yield 42;
     yield 43;
     yield 44;
@@ -13,7 +13,7 @@ function* mySaga() {
 // All you have to do is to pass your generator and call it.
 // The second argument is the AVA test function, that we are using under the hood.
 // That second argument is only used for AVA, not for Mocha or Jest.
-const test = sagaHelper(mySaga(), avaTest);
+const test = sagaHelper(myGenerator(), avaTest);
 
 // This looks very much like a normal "test", with one difference: the function is passed
 // a "result", which is what has been yield by the generator.

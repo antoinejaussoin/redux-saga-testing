@@ -59,7 +59,7 @@ This example uses a simple generator. This is not using any of the `redux-saga` 
 import sagaHelper from 'redux-saga-testing';
 
 // This is the generator / saga you wish to test
-function* mySaga() {
+function* myGenerator() {
     yield 42;
     yield 43;
     yield 44;
@@ -70,7 +70,7 @@ describe('When testing a very simple generator (not even a Saga)', () => {
     // That way, all the tests after that will look like regular tests but will actually be
     // running the generator forward at each step.
     // All you have to do is to pass your generator and call it.
-    const it = sagaHelper(mySaga());
+    const it = sagaHelper(myGenerator());
 
     // This looks very much like a normal "it", with one difference: the function is passed
     // a "result", which is what has been yield by the generator.
