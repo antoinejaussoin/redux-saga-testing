@@ -9,8 +9,7 @@ A no-brainer way of testing your Sagas™®
 #### Examples include [Jest](https://facebook.github.io/jest/), [Mocha](https://mochajs.org/) and [AVA](https://github.com/avajs/ava)
 
 [![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
-[![Dependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing)
-[![devDependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing/dev-status.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing#info=devDependencies)
+[![Dependency Status](https://gemnasium.com/badges/github.com/antoinejaussoin/redux-saga-testing.svg)](https://gemnasium.com/github.com/antoinejaussoin/redux-saga-testing)
 [![Travis branch](https://img.shields.io/travis/antoinejaussoin/redux-saga-testing/master.svg?style=flat-square)](https://travis-ci.org/antoinejaussoin/redux-saga-testing)
 [![Known Vulnerabilities](https://snyk.io/test/npm/redux-saga-testing/badge.svg)](https://snyk.io/test/npm/redux-saga-testing)
 
@@ -248,7 +247,7 @@ describe('When testing a complex Saga', () => {
 You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) [tests](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).
 
 
-### FAQ
+## FAQ
 
 - How can I test a Saga that uses `take` or `takeEvery`?
 
