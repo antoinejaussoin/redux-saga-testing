@@ -247,6 +247,39 @@ describe('When testing a complex Saga', () => {
 
 You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) [tests](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).
 
+
+### FAQ
+
+- How can I test a Saga that uses `take` or `takeEvery`?
+
+You should separate this generator in two: one that only uses `take` or `takeEvery` (the "watchers"), and the ones that atually run the code when the wait is over, like so:
+
+```javascript
+import { takeEvery } from 'redux-saga';
+import { put } from 'redux-saga/effects';
+import { SOME_ACTION, ANOTHER_ACTION } from './state';
+
+export function* onSomeAction(action) {
+        const { payload: data } = action;
+        yield put(actionGenerator(data));
+}
+
+export function* onAnotherAction() {
+        etc.
+}
+
+export default function* rootSaga() {
+    yield [
+        takeEvery(SOME_ACTION, onSomeAction),
+        takeEvery(ANOTHER_ACTION, onAnotherAction),
+        etc.
+    ];
+}
+```
+
+From the previous example, you don't have to test `rootSaga` but you can test `onSomeAction` and `onAnotherAction`.
+
+
 ## Code coverage
 
 This library should be compatible with your favourite code-coverage frameworks.
@@ -254,6 +287,11 @@ This library should be compatible with your favourite code-coverage frameworks.
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
 
 ## Change Log
+
+### v1.0.3
+
+- Adding documentation regarding `take` and `takeEvery`
+- Updating dependencies
 
 ### v1.0.2
 
