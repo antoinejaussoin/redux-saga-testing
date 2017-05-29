@@ -9,10 +9,9 @@ A no-brainer way of testing your Sagas™®
 #### Examples include [Jest](https://facebook.github.io/jest/), [Mocha](https://mochajs.org/) and [AVA](https://github.com/avajs/ava)
 
 [![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
-[![Dependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing)
-[![devDependency Status](https://david-dm.org/antoinejaussoin/redux-saga-testing/dev-status.svg)](https://david-dm.org/antoinejaussoin/redux-saga-testing#info=devDependencies)
+[![Dependency Status](https://gemnasium.com/badges/github.com/antoinejaussoin/redux-saga-testing.svg)](https://gemnasium.com/github.com/antoinejaussoin/redux-saga-testing)
 [![Travis branch](https://img.shields.io/travis/antoinejaussoin/redux-saga-testing/master.svg?style=flat-square)](https://travis-ci.org/antoinejaussoin/redux-saga-testing)
-
+[![Known Vulnerabilities](https://snyk.io/test/npm/redux-saga-testing/badge.svg)](https://snyk.io/test/npm/redux-saga-testing)
 
 > Sagas are hard, testing them is even harder
 > (*Napoleon*)
@@ -247,6 +246,39 @@ describe('When testing a complex Saga', () => {
 
 You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) [tests](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).
 
+
+## FAQ
+
+- How can I test a Saga that uses `take` or `takeEvery`?
+
+You should separate this generator in two: one that only uses `take` or `takeEvery` (the "watchers"), and the ones that atually run the code when the wait is over, like so:
+
+```javascript
+import { takeEvery } from 'redux-saga';
+import { put } from 'redux-saga/effects';
+import { SOME_ACTION, ANOTHER_ACTION } from './state';
+
+export function* onSomeAction(action) {
+        const { payload: data } = action;
+        yield put(actionGenerator(data));
+}
+
+export function* onAnotherAction() {
+        etc.
+}
+
+export default function* rootSaga() {
+    yield [
+        takeEvery(SOME_ACTION, onSomeAction),
+        takeEvery(ANOTHER_ACTION, onAnotherAction),
+        etc.
+    ];
+}
+```
+
+From the previous example, you don't have to test `rootSaga` but you can test `onSomeAction` and `onAnotherAction`.
+
+
 ## Code coverage
 
 This library should be compatible with your favourite code-coverage frameworks.
@@ -254,6 +286,16 @@ This library should be compatible with your favourite code-coverage frameworks.
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
 
 ## Change Log
+
+### v1.0.4
+
+- Updating dependencies
+- Fixed Ava issues with `babel-polyfill`
+
+### v1.0.3
+
+- Adding documentation regarding `take` and `takeEvery`
+- Updating dependencies
 
 ### v1.0.2
 
