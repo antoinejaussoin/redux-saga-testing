@@ -287,6 +287,11 @@ In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Je
 
 ## Change Log
 
+### v1.0.4
+
+- Updating dependencies
+- Fixed Ava issues with `babel-polyfill`
+
 ### v1.0.3
 
 - Adding documentation regarding `take` and `takeEvery`
