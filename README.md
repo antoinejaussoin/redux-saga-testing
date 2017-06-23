@@ -300,6 +300,11 @@ export default function* rootSaga() {
 
 From the previous example, you don't have to test `rootSaga` but you can test `onSomeAction` and `onAnotherAction`.
 
+- Do I need to mock the store and/or the state?
+
+No you don't. If you read the examples above carefuly, you'll notice that the actual selector (for example) is never called. That means you don't need to mock anything, just return the value your selector should have returned.
+This library is to test a saga *workflow*, not about testing your actual *selectors*. If you need to test a selector, do it in isolation (it's just a pure function after all).
+
 
 ## Code coverage
 
