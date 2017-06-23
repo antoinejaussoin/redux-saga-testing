@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-testing",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A no-brainer way of testing your Sagas",
   "main": "main.js",
   "scripts": {
@@ -37,18 +37,18 @@
   "homepage": "https://github.com/antoinejaussoin/redux-saga-testing#readme",
   "devDependencies": {
     "ava": "^0.19.1",
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-jest": "^20.0.3",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.5.1",
+    "babel-preset-env": "^1.5.2",
     "babel-register": "^6.24.1",
-    "cross-env": "^5.0.0",
+    "cross-env": "^5.0.1",
     "expect.js": "0.3.1",
     "istanbul": "1.1.0-alpha.1",
     "jest": "^20.0.4",
     "mocha": "^3.4.2",
-    "redux-saga": "^0.15.3",
-    "sinon": "^2.3.2"
+    "redux-saga": "^0.15.4",
+    "sinon": "^2.3.5"
   },
   "jest": {
     "rootDir": "jest"
