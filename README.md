@@ -102,6 +102,7 @@ This examples is now actually using the `redux-saga` utility functions.
 
 The important point to note here, is that Sagas **describe** what happens, and don't actually act on it.
 For example, an API will never be called, you don't have to mock it, when using `call`.
+Same thing for a selector, you don't need to mock the state when using `yield select(mySelector)`.
 
 This makes testing very easy indeed.
 
@@ -146,7 +147,7 @@ describe('When testing a very simple Saga', () => {
 
 ## Testing a complex Saga
 
-This example deals with pretty much all use-cases for using Sagas, which involves calling an API, getting exceptions, and have some conditional logic based on some inputs.
+This example deals with pretty much all use-cases for using Sagas, which involves using a `select`or, `call`ing an API, getting exceptions, have some conditional logic based on some inputs and `put`ing new actions.
 
 ```javascript
 import sagaHelper from 'redux-saga-testing';
@@ -313,6 +314,10 @@ This library should be compatible with your favourite code-coverage frameworks.
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
 
 ## Change Log
+
+### v1.0.5
+ - Updating dependencies
+ - Adding examples using `selector`s (thanks [@TAGC](https://github.com/tagc) for the suggestion)
 
 ### v1.0.4
 
