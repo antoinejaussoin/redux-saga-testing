@@ -271,7 +271,7 @@ You have other examples in the [various](https://github.com/antoinejaussoin/redu
 
 ## FAQ
 
-- How can I test a Saga that uses `take` or `takeEvery`?
+#### How can I test a Saga that uses `take` or `takeEvery`?
 
 You should separate this generator in two: one that only uses `take` or `takeEvery` (the "watchers"), and the ones that atually run the code when the wait is over, like so:
 
@@ -300,7 +300,7 @@ export default function* rootSaga() {
 
 From the previous example, you don't have to test `rootSaga` but you can test `onSomeAction` and `onAnotherAction`.
 
-- Do I need to mock the store and/or the state?
+#### Do I need to mock the store and/or the state?
 
 No you don't. If you read the examples above carefuly, you'll notice that the actual selector (for example) is never called. That means you don't need to mock anything, just return the value your selector should have returned.
 This library is to test a saga *workflow*, not about testing your actual *selectors*. If you need to test a selector, do it in isolation (it's just a pure function after all).
