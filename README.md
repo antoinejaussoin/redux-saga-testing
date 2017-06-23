@@ -314,6 +314,10 @@ In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Je
 
 ## Change Log
 
+### v1.0.5
+ - Updating dependencies
+ - Adding examples using `selector`s (thanks [@TAGC](https://github.com/tagc) for the suggestion)
+
 ### v1.0.4
 
 - Updating dependencies
