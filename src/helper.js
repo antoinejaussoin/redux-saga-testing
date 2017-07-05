@@ -4,7 +4,8 @@ export default (generator, testFunction) => {
     if (!testFn) {
         testFn = it;
     }
-    return (title, fn) => {
+    const myFn = (title, fn) => {
+        if(!fn) return it.skip(title);
         testFn(title, function() {
             if (input instanceof Error) {
                 const result = generator.throw(input);
@@ -15,4 +16,6 @@ export default (generator, testFunction) => {
             }
         });
     };
+    myFn.skip = it.skip;
+    return myFn;
 };
