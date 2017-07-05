@@ -1,4 +1,4 @@
-const sagaHelper = (generator, testFunction) => {
+export default (generator, testFunction) => {
     let input = undefined;
     let testFn = testFunction;
     if (!testFn) {
