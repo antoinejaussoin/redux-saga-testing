@@ -1,5 +1,5 @@
 import sagaHelper from '../main';
-import { call, put } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 
 const someOtherAction = payload => ({ type: 'SOME_OTHER_ACTION', payload });
 
