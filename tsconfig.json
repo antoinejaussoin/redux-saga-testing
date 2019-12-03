@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "CommonJS",
+    "lib": ["es2015", "ES2016", "ES2017", "ES2018", "ES2019"],
+    "outDir": "./",
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "files": ["src/helper.ts"],
+  // "include": ["src/helper.ts"],
+  "exclude": ["node_modules/**/*", "**/*.spec.ts", "**/*.test.ts"]
+}

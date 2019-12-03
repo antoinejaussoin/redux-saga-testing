@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=function(a,b){var c=void 0,d=b;return d||(d=it),function(e,f){d(e,function(){if(c instanceof Error){var g=a.throw(c);c=f.apply(void 0,[g.value].concat(Array.prototype.slice.call(arguments)))}else{var _g=a.next(c);c=f.apply(void 0,[_g.value].concat(Array.prototype.slice.call(arguments)))}})}};
