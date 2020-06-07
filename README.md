@@ -9,7 +9,6 @@ A no-brainer way of testing your Sagas™®
 #### Examples include [Jest](https://facebook.github.io/jest/), [Mocha](https://mochajs.org/) and [AVA](https://github.com/avajs/ava)
 
 [![npm](https://img.shields.io/npm/v/redux-saga-testing.svg?style=flat-square)](https://www.npmjs.com/package/redux-saga-testing)
-[![Dependency Status](https://gemnasium.com/badges/github.com/antoinejaussoin/redux-saga-testing.svg)](https://gemnasium.com/github.com/antoinejaussoin/redux-saga-testing)
 [![Travis branch](https://img.shields.io/travis/antoinejaussoin/redux-saga-testing/master.svg?style=flat-square)](https://travis-ci.org/antoinejaussoin/redux-saga-testing)
 [![Known Vulnerabilities](https://snyk.io/test/npm/redux-saga-testing/badge.svg)](https://snyk.io/test/npm/redux-saga-testing)
 
@@ -49,8 +48,6 @@ You can then use this with any version of `redux-saga`, or without it for that m
 
 This tutorial goes from simple to complex. As you will see, testing Sagas becomes as easy as testing regular (and synchronous) code.
 
-Note: for Mocha examples, please [look here](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha)
-
 ### Simple (non-Saga) examples
 
 This example uses a simple generator. This is not using any of the `redux-saga` functions and helpers.
@@ -76,22 +73,22 @@ describe('When testing a very simple generator (not even a Saga)', () => {
   // a "result", which is what has been yield by the generator.
   // This is what you are going to test, using your usual testing framework syntax.
   // Here we are using "expect" because we are using Jest, but really it could be anything.
-  it('should return 42', result => {
+  it('should return 42', (result) => {
     expect(result).toBe(42);
   });
 
   // On the next "it", we move the generator forward one step, and test again.
-  it('and then 43', result => {
+  it('and then 43', (result) => {
     expect(result).toBe(43);
   });
 
   // Same here
-  it('and then 44', result => {
+  it('and then 44', (result) => {
     expect(result).toBe(44);
   });
 
   // Now the generator doesn't yield anything, so we can test we arrived at the end
-  it('and then nothing', result => {
+  it('and then nothing', (result) => {
     expect(result).toBeUndefined();
   });
 });
@@ -101,11 +98,11 @@ describe('When testing a very simple generator (not even a Saga)', () => {
 
 This examples is now actually using the `redux-saga` utility functions.
 
-The important point to note here, is that Sagas **describe** what happens, and don't actually act on it.
+The important point to note here, is that Sagas **describe** what happens, they don't actually act on it.
 For example, an API will never be called, you don't have to mock it, when using `call`.
 Same thing for a selector, you don't need to mock the state when using `yield select(mySelector)`.
 
-This makes testing very easy indeed.
+This makes testing Sagas very easy indeed.
 
 ```javascript
 import sagaHelper from 'redux-saga-testing';
@@ -122,7 +119,7 @@ function* mySaga() {
 describe('When testing a very simple Saga', () => {
   const it = sagaHelper(mySaga());
 
-  it('should have called the mock API first', result => {
+  it('should have called the mock API first', (result) => {
     // Here we test that the generator did run the "call" function, with the "api" as an argument.
     // The api funtion is NOT called.
     expect(result).toEqual(call(api));
@@ -133,14 +130,14 @@ describe('When testing a very simple Saga', () => {
     expect(api).not.toHaveBeenCalled();
   });
 
-  it('and then trigger an action', result => {
+  it('and then trigger an action', (result) => {
     // We then test that on the next step some action is called
     // Here, obviously, 'someAction' is called but it doesn't have any effect
     // since it only returns an object describing the action
     expect(result).toEqual(put(someAction()));
   });
 
-  it('and then nothing', result => {
+  it('and then nothing', (result) => {
     expect(result).toBeUndefined();
   });
 });
@@ -157,12 +154,12 @@ import { call, put, select } from 'redux-saga/effects';
 const splitApi = jest.fn();
 const someActionSuccess = (payload: any) => ({
   type: 'SOME_ACTION_SUCCESS',
-  payload
+  payload,
 });
 const someActionEmpty = () => ({ type: 'SOME_ACTION_EMPTY' });
 const someActionError = (error: any) => ({
   type: 'SOME_ACTION_ERROR',
-  payload: error
+  payload: error,
 });
 const selectFilters = (state: any) => state.filters;
 
@@ -176,7 +173,7 @@ function* mySaga(input) {
     const someData = yield call(splitApi, input);
 
     // From the data we get from the API, we filter out the words 'foo' and 'bar'
-    const transformedData = someData.filter(w => filters.indexOf(w) === -1);
+    const transformedData = someData.filter((w) => filters.indexOf(w) === -1);
 
     // If the resulting array is empty, we call the empty action, otherwise we call the success action
     if (transformedData.length === 0) {
@@ -194,7 +191,7 @@ describe('When testing a complex Saga', () => {
   describe("Scenario 1: When the input contains other words than foo and bar and doesn't throw", () => {
     const it = sagaHelper(mySaga('hello,foo,bar,world'));
 
-    it('should get the list of filters from the state', result => {
+    it('should get the list of filters from the state', (result) => {
       expect(result).toEqual(select(selectFilters));
 
       // Here we specify what the selector should have returned.
@@ -202,7 +199,7 @@ describe('When testing a complex Saga', () => {
       return ['foo', 'bar'];
     });
 
-    it('should have called the mock API first, which we are going to specify the results of', result => {
+    it('should have called the mock API first, which we are going to specify the results of', (result) => {
       expect(result).toEqual(call(splitApi, 'hello,foo,bar,world'));
 
       // Here we specify what the API should have returned.
@@ -210,11 +207,11 @@ describe('When testing a complex Saga', () => {
       return ['hello', 'foo', 'bar', 'world'];
     });
 
-    it('and then trigger an action with the transformed data we got from the API', result => {
+    it('and then trigger an action with the transformed data we got from the API', (result) => {
       expect(result).toEqual(put(someActionSuccess(['hello', 'world'])));
     });
 
-    it('and then nothing', result => {
+    it('and then nothing', (result) => {
       expect(result).toBeUndefined();
     });
   });
@@ -222,21 +219,21 @@ describe('When testing a complex Saga', () => {
   describe('Scenario 2: When the input only contains foo and bar', () => {
     const it = sagaHelper(mySaga('foo,bar'));
 
-    it('should get the list of filters from the state', result => {
+    it('should get the list of filters from the state', (result) => {
       expect(result).toEqual(select(selectFilters));
       return ['foo', 'bar'];
     });
 
-    it('should have called the mock API first, which we are going to specify the results of', result => {
+    it('should have called the mock API first, which we are going to specify the results of', (result) => {
       expect(result).toEqual(call(splitApi, 'foo,bar'));
       return ['foo', 'bar'];
     });
 
-    it('and then trigger the empty action since foo and bar are filtered out', result => {
+    it('and then trigger the empty action since foo and bar are filtered out', (result) => {
       expect(result).toEqual(put(someActionEmpty()));
     });
 
-    it('and then nothing', result => {
+    it('and then nothing', (result) => {
       expect(result).toBeUndefined();
     });
   });
@@ -244,12 +241,12 @@ describe('When testing a complex Saga', () => {
   describe('Scenario 3: The API is broken and throws an exception', () => {
     const it = sagaHelper(mySaga('hello,foo,bar,world'));
 
-    it('should get the list of filters from the state', result => {
+    it('should get the list of filters from the state', (result) => {
       expect(result).toEqual(select(selectFilters));
       return ['foo', 'bar'];
     });
 
-    it('should have called the mock API first, which will throw an exception', result => {
+    it('should have called the mock API first, which will throw an exception', (result) => {
       expect(result).toEqual(call(splitApi, 'hello,foo,bar,world'));
 
       // Here we pretend that the API threw an exception.
@@ -258,11 +255,11 @@ describe('When testing a complex Saga', () => {
       return new Error('Something went wrong');
     });
 
-    it('and then trigger an error action with the error message', result => {
+    it('and then trigger an error action with the error message', (result) => {
       expect(result).toEqual(put(someActionError('Something went wrong')));
     });
 
-    it('and then nothing', result => {
+    it('and then nothing', (result) => {
       expect(result).toBeUndefined();
     });
   });
@@ -271,7 +268,7 @@ describe('When testing a complex Saga', () => {
 
 ### Other examples
 
-You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) [tests](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/mocha) [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).
+You have other examples in the [various](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/jest) tests [folders](https://github.com/antoinejaussoin/redux-saga-testing/tree/master/ava).
 
 ## FAQ
 
@@ -307,7 +304,7 @@ From the previous example, you don't have to test `rootSaga` but you can test `o
 #### Do I need to mock the store and/or the state?
 
 No you don't. If you read the examples above carefuly, you'll notice that the actual selector (for example) is never called. That means you don't need to mock anything, just return the value your selector should have returned.
-This library is to test a saga _workflow_, not about testing your actual _selectors_. If you need to test a selector, do it in isolation (it's just a pure function after all).
+This library is designed to test a Saga _workflow_, not testing your actual _selectors_. If you need to test a selector, do it in isolation (it's just a pure function after all).
 
 ## Code coverage
 
@@ -316,6 +313,12 @@ This library should be compatible with your favourite code-coverage frameworks.
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
 
 ## Change Log
+
+### v2.0.1
+
+- Updating dependencies
+- Fix AVA's config
+- README wording
 
 ### v2.0.0
 

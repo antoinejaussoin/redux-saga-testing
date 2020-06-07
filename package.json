@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/antoinejaussoin/redux-saga-testing#readme",
   "devDependencies": {
+    "@ava/babel": "^1.0.1",
     "@types/jest": "^25.2.3",
     "@types/sinon": "^9.0.4",
     "ava": "^3.8.2",
@@ -47,8 +48,7 @@
     "sinon": "^9.0.2",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5",
-    "@ava/babel": "^1.0.1"
+    "typescript": "^3.9.5"
   },
   "jest": {
     "rootDir": "jest"
