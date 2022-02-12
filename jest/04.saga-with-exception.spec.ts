@@ -10,19 +10,19 @@ interface ApiResult {
 const api = jest.fn();
 const someActionSuccess = (payload: ApiResult) => ({
   type: "SOME_ACTION_SUCCESS",
-  payload
+  payload,
 });
 const someActionError = (error: string) => ({
   type: "SOME_ACTION_ERROR",
-  payload: error
+  payload: error,
 });
 
-function* mySaga() {
+function* mySaga(): any {
   try {
     const someData = yield call(api);
     const transformedData = someData.map((x: ApiResult) => x.id);
     yield put(someActionSuccess(transformedData));
-  } catch (e) {
+  } catch (e: any) {
     yield put(someActionError(e.message));
   }
 }
@@ -30,16 +30,16 @@ function* mySaga() {
 describe("When testing a Saga that throws an error", () => {
   const it = sagaHelper(mySaga());
 
-  it("should have called the mock API first, which will throw an exception", result => {
+  it("should have called the mock API first, which will throw an exception", (result) => {
     expect(result).toEqual(call(api));
     return new Error("Something went wrong");
   });
 
-  it("and then trigger an error action with the error message", result => {
+  it("and then trigger an error action with the error message", (result) => {
     expect(result).toEqual(put(someActionError("Something went wrong")));
   });
 
-  it("and then nothing", result => {
+  it("and then nothing", (result) => {
     expect(result).toBeUndefined();
   });
 });

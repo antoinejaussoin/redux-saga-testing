@@ -36,21 +36,30 @@
   },
   "homepage": "https://github.com/antoinejaussoin/redux-saga-testing#readme",
   "devDependencies": {
-    "@ava/babel": "^1.0.1",
-    "@types/jest": "^25.2.3",
-    "@types/sinon": "^9.0.4",
-    "ava": "^3.8.2",
-    "cross-env": "^7.0.2",
+    "@ava/babel": "^2.0.0",
+    "@ava/typescript": "^3.0.1",
+    "@types/jest": "^27.4.0",
+    "@types/sinon": "^10.0.11",
+    "ava": "^4.0.1",
+    "cross-env": "^7.0.3",
     "expect.js": "0.3.1",
     "istanbul": "1.1.0-alpha.1",
-    "jest": "^26.0.1",
+    "jest": "^27.5.1",
     "redux-saga": "^1.1.3",
-    "sinon": "^9.0.2",
-    "ts-jest": "^26.1.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "sinon": "^13.0.1",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   },
   "jest": {
     "rootDir": "jest"
-  }
+  },
+  "ava": {
+		"typescript": {
+			"rewritePaths": {
+				"src/": "build/"
+			},
+			"compile": false
+		}
+	}
 }
