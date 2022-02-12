@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-testing",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A no-brainer way of testing your Sagas",
   "main": "helper.js",
   "types": "helper.d.ts",
