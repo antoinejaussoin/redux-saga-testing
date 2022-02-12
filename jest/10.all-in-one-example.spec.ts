@@ -9,16 +9,16 @@ interface State {
 const splitApi = jest.fn();
 const someActionSuccess = (payload: string[]) => ({
   type: "SOME_ACTION_SUCCESS",
-  payload
+  payload,
 });
 const someActionEmpty = () => ({ type: "SOME_ACTION_EMPTY" });
 const someActionError = (error: string) => ({
   type: "SOME_ACTION_ERROR",
-  payload: error
+  payload: error,
 });
 const selectFilters = (state: State) => state.filters;
 
-function* mySaga(input: string) {
+function* mySaga(input: string): any {
   try {
     // We get the filters list from the state, using "select"
     const filters = yield select(selectFilters);
@@ -38,7 +38,7 @@ function* mySaga(input: string) {
     } else {
       yield put(someActionSuccess(transformedData));
     }
-  } catch (e) {
+  } catch (e: any) {
     // If we got an exception along the way, we call the error action with the error message
     yield put(someActionError(e.message));
   }
@@ -64,11 +64,11 @@ describe("When testing a complex Saga", () => {
       return ["hello", "foo", "bar", "world"];
     });
 
-    it("and then trigger an action with the transformed data we got from the API", result => {
+    it("and then trigger an action with the transformed data we got from the API", (result) => {
       expect(result).toEqual(put(someActionSuccess(["hello", "world"])));
     });
 
-    it("and then nothing", result => {
+    it("and then nothing", (result) => {
       expect(result).toBeUndefined();
     });
   });
@@ -76,21 +76,21 @@ describe("When testing a complex Saga", () => {
   describe("Scenario 2: When the input only contains foo and bar", () => {
     const it = sagaHelper(mySaga("foo,bar"));
 
-    it("should get the list of filters from the state", result => {
+    it("should get the list of filters from the state", (result) => {
       expect(result).toEqual(select(selectFilters));
       return ["foo", "bar"];
     });
 
-    it("should have called the mock API first, which we are going to specify the results of", result => {
+    it("should have called the mock API first, which we are going to specify the results of", (result) => {
       expect(result).toEqual(call(splitApi, "foo,bar"));
       return ["foo", "bar"];
     });
 
-    it("and then trigger the empty action since foo and bar are filtered out", result => {
+    it("and then trigger the empty action since foo and bar are filtered out", (result) => {
       expect(result).toEqual(put(someActionEmpty()));
     });
 
-    it("and then nothing", result => {
+    it("and then nothing", (result) => {
       expect(result).toBeUndefined();
     });
   });
@@ -98,12 +98,12 @@ describe("When testing a complex Saga", () => {
   describe("Scenario 3: The API is broken and throws an exception", () => {
     const it = sagaHelper(mySaga("hello,foo,bar,world"));
 
-    it("should get the list of filters from the state", result => {
+    it("should get the list of filters from the state", (result) => {
       expect(result).toEqual(select(selectFilters));
       return ["foo", "bar"];
     });
 
-    it("should have called the mock API first, which will throw an exception", result => {
+    it("should have called the mock API first, which will throw an exception", (result) => {
       expect(result).toEqual(call(splitApi, "hello,foo,bar,world"));
 
       // Here we pretend that the API threw an exception.
@@ -112,11 +112,11 @@ describe("When testing a complex Saga", () => {
       return new Error("Something went wrong");
     });
 
-    it("and then trigger an error action with the error message", result => {
+    it("and then trigger an error action with the error message", (result) => {
       expect(result).toEqual(put(someActionError("Something went wrong")));
     });
 
-    it("and then nothing", result => {
+    it("and then nothing", (result) => {
       expect(result).toBeUndefined();
     });
   });

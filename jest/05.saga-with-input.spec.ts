@@ -9,21 +9,21 @@ interface Action {
 
 const someOtherAction = (payload: string): Action => ({
   type: "SOME_OTHER_ACTION",
-  payload
+  payload,
 });
 
-function* mySaga(action: Action) {
+function* mySaga(action: Action): any {
   yield put(someOtherAction(action.payload));
 }
 
 describe("When testing Saga that has an input (usually an action)", () => {
   const it = sagaHelper(mySaga({ type: "SOME_ACTION", payload: "foo" }));
 
-  it("should trigger the other action with the input action payload", result => {
+  it("should trigger the other action with the input action payload", (result) => {
     expect(result).toEqual(put(someOtherAction("foo")));
   });
 
-  it("and then nothing", result => {
+  it("and then nothing", (result) => {
     expect(result).toBeUndefined();
   });
 });

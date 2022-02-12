@@ -52,11 +52,11 @@ This tutorial goes from simple to complex. As you will see, testing Sagas become
 
 This example uses a simple generator. This is not using any of the `redux-saga` functions and helpers.
 
-```javascript
+```typescript
 import sagaHelper from 'redux-saga-testing';
 
 // This is the generator / saga you wish to test
-function* myGenerator() {
+function* myGenerator(): any {
   yield 42;
   yield 43;
   yield 44;
@@ -104,14 +104,14 @@ Same thing for a selector, you don't need to mock the state when using `yield se
 
 This makes testing Sagas very easy indeed.
 
-```javascript
+```typescript
 import sagaHelper from 'redux-saga-testing';
 import { call, put } from 'redux-saga/effects';
 
 const api = jest.fn();
 const someAction = () => ({ type: 'SOME_ACTION', payload: 'foo' });
 
-function* mySaga() {
+function* mySaga(): any {
   yield call(api);
   yield put(someAction());
 }
@@ -147,7 +147,7 @@ describe('When testing a very simple Saga', () => {
 
 This example deals with pretty much all use-cases for using Sagas, which involves using a `select`or, `call`ing an API, getting exceptions, have some conditional logic based on some inputs and `put`ing new actions.
 
-```javascript
+```typescript
 import sagaHelper from 'redux-saga-testing';
 import { call, put, select } from 'redux-saga/effects';
 
@@ -163,7 +163,7 @@ const someActionError = (error: any) => ({
 });
 const selectFilters = (state: any) => state.filters;
 
-function* mySaga(input) {
+function* mySaga(input): any {
   try {
     // We get the filters list from the state, using "select"
     const filters = yield select(selectFilters);
@@ -181,7 +181,7 @@ function* mySaga(input) {
     } else {
       yield put(someActionSuccess(transformedData));
     }
-  } catch (e) {
+  } catch (e: any) {
     // If we got an exception along the way, we call the error action with the error message
     yield put(someActionError(e.message));
   }
@@ -276,7 +276,7 @@ You have other examples in the [various](https://github.com/antoinejaussoin/redu
 
 You should separate this generator in two: one that only uses `take` or `takeEvery` (the "watchers"), and the ones that atually run the code when the wait is over, like so:
 
-```javascript
+```typescript
 import { takeEvery } from 'redux-saga';
 import { put } from 'redux-saga/effects';
 import { SOME_ACTION, ANOTHER_ACTION } from './state';
@@ -290,7 +290,7 @@ export function* onAnotherAction() {
         etc.
 }
 
-export default function* rootSaga() {
+export default function* rootSaga(): any {
     yield [
         takeEvery(SOME_ACTION, onSomeAction),
         takeEvery(ANOTHER_ACTION, onAnotherAction),
@@ -313,6 +313,11 @@ This library should be compatible with your favourite code-coverage frameworks.
 In the GitHub repo, you'll find examples using **Istanbul** (for Mocha) and **Jest**.
 
 ## Change Log
+
+### v2.0.2
+
+- Updating dependencies
+- Fix TypeScript typings
 
 ### v2.0.1
 

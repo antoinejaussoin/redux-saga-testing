@@ -1,8 +1,8 @@
-import sagaHelper from '../src/helper';
-import avaTest, { Assertions } from 'ava';
+import sagaHelper from "../src/helper";
+import avaTest, { Assertions } from "ava";
 
 // This is the generator / saga you wish to test
-function* myGenerator() {
+function* myGenerator(): any {
   yield 42;
   yield 43;
   yield 44;
@@ -18,21 +18,21 @@ const test = sagaHelper(myGenerator(), avaTest);
 // This looks very much like a normal "test", with one difference: the function is passed
 // a "result", which is what has been yield by the generator.
 // This is what you are going to test, using your usual testing framework syntax.
-test('should return 42', (result, t: Assertions) => {
+test("should return 42", (result, t: Assertions) => {
   t.is(result, 42);
 });
 
 // On the next "test", we move the generator forward one step, and test again.
-test('and then 43', (result, t: Assertions) => {
+test("and then 43", (result, t: Assertions) => {
   t.is(result, 43);
 });
 
 // Same here
-test('and then 44', (result, t: Assertions) => {
+test("and then 44", (result, t: Assertions) => {
   t.is(result, 44);
 });
 
 // Now the generator doesn't yield anything, so we can test we arrived at the end
-test('and then nothing', (result, t: Assertions) => {
+test("and then nothing", (result, t: Assertions) => {
   t.is(result, undefined);
 });
